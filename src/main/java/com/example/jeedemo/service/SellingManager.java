@@ -52,4 +52,11 @@ public class SellingManager {
 		
 		car.setSold(false);
 	}
+	
+	public void addCar(Car car){
+		car.setId(null);
+		em.persist(car);
+		
+		
+	}
 }

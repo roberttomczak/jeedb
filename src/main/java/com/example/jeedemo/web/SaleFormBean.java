@@ -24,8 +24,16 @@ public class SaleFormBean implements Serializable {
 	@Inject
 	private PersonManager pm;
 
+	private Car car = new Car();
 	private Long carId;
 	private Long personId;
+	
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
+	}
 	
 	public Long getCarId() {
 		return carId;
@@ -47,7 +55,11 @@ public class SaleFormBean implements Serializable {
 	public List<Person> getAllPersons() {
 		return pm.getAllPersons();
 	}
-
+	
+	public String addCar(){
+		sm.addCar(car);
+		return null;
+	}
 	public String sellCar() {
 		sm.sellCar(personId, carId);
 		return null;
