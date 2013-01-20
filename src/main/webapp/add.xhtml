@@ -9,14 +9,24 @@
 
 	<ui:define name="content">
 		<h:form id="personForm">
+				<f:event type="postValidate" listener="#{personBean.validatePinDob}" />
 			<h:panelGrid columns="2">
-
+					
+				
 				<h:outputText value="#{msg.personFirstNameLabel}" />
 				<h:inputText id="firstName" value="#{personBean.person.firstName}"
-					required="#{true}" />
+					required="#{true}"/>
+					
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}" />
+				<h:outputText value="Pesel" />
+				<h:inputText id="pin" value="#{personBean.person.pin}" validator="#{personBean.uniquePin}" required="#{true}">>
+					<f:validator validatorId="pinValidator" />
+				</h:inputText>
+				
+				<h:outputText value="Data urodzenia" />
+				<h:inputText id="dob" value="#{personBean.person.dateOfBirth}">
+				  <f:convertDateTime type="date" pattern="dd.MM.yyyy" />
+				</h:inputText>
 
 				<h:outputText value="Registration date" />
 				<rich:calendar value="#{personBean.person.registrationDate}"

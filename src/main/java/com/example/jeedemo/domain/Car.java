@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Max;
+
 
 @Entity
 @NamedQuery(name = "car.unsold", query = "Select c from Car c where c.sold = false")
@@ -23,12 +25,14 @@ public class Car {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@Max(value = 20)
 	public String getMake() {
 		return make;
 	}
 	public void setMake(String make) {
 		this.make = make;
 	}
+	
 	public String getModel() {
 		return model;
 	}

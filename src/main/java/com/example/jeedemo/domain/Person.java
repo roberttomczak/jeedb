@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -28,7 +29,9 @@ public class Person {
 	private String firstName = "unknown";
 	private String pin = "";
 	private Date registrationDate = new Date();
+	private Date dateOfBirth = new Date();
 
+	
 	private List<Car> cars = new ArrayList<Car>();
 
 	@Id
@@ -40,7 +43,7 @@ public class Person {
 		this.id = id;
 	}
 	
-	@Size(min = 2, max = 20)
+	@Size(min = 2, max = 20, message = "Imie powinno być pomiedzy 2 a 20 znakow")
 	public String getFirstName() {
 		return firstName;
 	}
@@ -71,5 +74,13 @@ public class Person {
 	}
 	public void setCars(List<Car> cars) {
 		this.cars = cars;
+	}
+	
+	@Past
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 }

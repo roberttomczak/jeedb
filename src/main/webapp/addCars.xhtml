@@ -16,8 +16,10 @@
 					required="#{true}" />
 
 				<h:outputText value="Model" />
-				<h:inputText id="model" value="#{saleBean.car.model}" />
-
+				<h:inputText id="model" value="#{saleBean.car.model}" >
+					<f:validateLength minimum="3" maximum="15" />
+					<f:ajax execute="@this" render="messages beanState" />
+				</h:inputText>
 				
 			</h:panelGrid>
 
@@ -28,6 +30,11 @@
 				<h:messages for="" />
 				<h:messages id="messages" showDetail="#{true}"
 					showSummary="#{false}" />
+			</h:panelGrid>
+			
+			<h:panelGrid id="beanState" columns="2">
+				<h:outputText value="Model" />
+				<h:outputText id="carOutput" value="#{saleBean.car.model}" />
 			</h:panelGrid>
 
 		</h:form>
