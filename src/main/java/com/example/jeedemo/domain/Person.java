@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -51,7 +52,7 @@ public class Person {
 		this.firstName = firstName;
 	}
 
-	@Size(min = 2)
+	@Min(value = 999, message = "Pin wiekszy niz 999")
 	public String getPin() {
 		return pin;
 	}
